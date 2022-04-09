@@ -1,3 +1,5 @@
+difference = 0;
+
 function setup(){
     video = createCapture(VIDEO);
     video.size(550, 500);
@@ -15,5 +17,19 @@ function modelLoaded(){
 function gotPoses(results){
     if(results.length > 0){
         console.log(results);
+    lwx = results[0].pose.leftWrist.x;
+    rwx = results[0].pose.rightWrist.x;
+    difference = floor(lwx - rwx);
     }
+    
+
+
 }
+
+function draw(){
+    background("yellow");
+    textSize(difference);
+    fill("red");
+    text('COMING SOON', 50, 400);
+}
+
